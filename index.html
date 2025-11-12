@@ -1,62 +1,39 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://open.spotify.com; frame-src https://open.spotify.com https://*.spotify.com;">
     <title>Spotify Player</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body {
             background: transparent !important;
-            width: 100vw;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            width: 100%;
             overflow: hidden;
         }
-        .spotify-container {
-            width: 300px;
-            height: 380px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        iframe {
+        .spotify-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
             height: 100%;
-            border: none;
         }
     </style>
 </head>
 <body>
-    <div class="spotify-container">
-        <iframe src="https://open.spotify.com/embed/track/0lUdYoSr8Hm3GL0HZld4ac?utm_source=generator&theme=0" 
+    <div class="spotify-wrapper">
+        <iframe src="https://open.spotify.com/embed/track/0lUdYoSr8Hm3GL0HZld4ac?utm_source=generator" 
+                width="300" 
+                height="380" 
+                style="border-radius:12px; border:none; display: block;" 
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                 loading="eager">
         </iframe>
     </div>
-    
-    <script>
-        // Check if embedded in iframe
-        if (window.self !== window.top) {
-            console.log('Running in embedded mode (Canva)');
-            document.body.style.background = 'transparent';
-        }
-        
-        // Force responsive behavior
-        window.addEventListener('resize', function() {
-            const container = document.querySelector('.spotify-container');
-            const scale = Math.min(window.innerWidth / 300, window.innerHeight / 380);
-            container.style.transform = `scale(${scale * 0.95})`;
-        });
-        window.dispatchEvent(new Event('resize'));
-    </script>
 </body>
 </html>
